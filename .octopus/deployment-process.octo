@@ -1,10 +1,72 @@
 process {
-    Id = "deploymentprocess-Projects-5783"
-    OwnerId = "Projects-5783"
+    Id = "deploymentprocess-Projects-5789"
+    OwnerId = "Projects-5789"
     IsFrozen = false
-    Version = 0
+    Version = 1
     SpaceId = "Spaces-1"
     Steps {
+        run_a_script {
+            Id = "424ef72c-e847-4791-9993-e4c2601080d6"
+            Name = "Run a Script"
+            Condition = "Success"
+            StartTrigger = "StartAfterPrevious"
+            PackageRequirement = "LetOctopusDecide"
+            Actions {
+                run_a_script {
+                    Id = "84730613-b18d-4e51-9df0-af8619dd0b52"
+                    Name = "Run a Script"
+                    ActionType = "Octopus.Script"
+                    WorkerPoolIdOrName = "Default Worker Pool"
+                    Container {
+                    }
+                    IsDisabled = false
+                    IsRequired = false
+                    Environments = []
+                    ExcludedEnvironments = []
+                    Channels = []
+                    TenantTags = []
+                    Packages {
+                    }
+                    Condition = "Success"
+                    Properties {
+                        octopus.action.runonserver {
+                            Key = "Octopus.Action.RunOnServer"
+                            Value {
+                                Value = "true"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.scriptsource {
+                            Key = "Octopus.Action.Script.ScriptSource"
+                            Value {
+                                Value = "Inline"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.syntax {
+                            Key = "Octopus.Action.Script.Syntax"
+                            Value {
+                                Value = "PowerShell"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.script.scriptbody {
+                            Key = "Octopus.Action.Script.ScriptBody"
+                            Value {
+                                Value = "echo 'hi'"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                    }
+                }
+            }
+            Properties {
+            }
+        }
     }
-    RelatedDocumentIds = []
+    RelatedDocumentIds = ["Default Worker Pool"]
 }
